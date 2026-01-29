@@ -4,15 +4,15 @@ The SMART POLE framework is designed to eliminate the "guessing" that AI does wh
 
 ## Deep Dive into Categories
 
-### 1. S - Style (The Vibe)
-- **Concept**: The "look and feel" of the response.
-- **Atoms**: "Cynical noir," "Helpful tutor," "Academic paper," "Tweet thread."
-- **Logic**: Sets the vocabulary and syntactic structure.
+### 1. S - Style (The AI's Mask)
+- **Concept**: The persona the AI wears.
+- **Atoms**: "Cynical noir," "Helpful tutor," "Academic paper."
+- **Logic**: Sets the vocabulary and syntactic structure of the *response*.
 
-### 2. M - Mastery (The Knowledge Level)
-- **Concept**: What level of internal weights should the AI activate?
-- **Atoms**: "Senior Architect," "5-year-old child," "Intermediate knitter."
-- **Logic**: Prevents "average" explanations by locking into a specific expertise tier.
+### 2. M - Mastery (The User's Level)
+- **Concept**: Who is the user? What is their cognitive load capacity?
+- **Atoms**: "Senior Architect (High context)," "5-year-old child (Low context)," "Intermediate knitter."
+- **Logic**: Prevents "average" explanations by locking into a specific expertise tier for the *explanation*.
 
 ### 3. A - Aim (The Objective & Scorecard)
 - **Concept**: The specific result and how it will be judged.
@@ -46,7 +46,8 @@ The SMART POLE framework is designed to eliminate the "guessing" that AI does wh
 
 ### 9. E - Example (The Anchor)
 - **Concept**: A reference point for the AI to follow.
-- **Atoms**: "Style like Steve Jobs," "Format like a McKinsey report," "Similar to the attached screenshot."
+- **Insight**: **Snippet Power > Name Dropping**. It is better to provide a concrete 3-line example than to say "Write like Shakespeare."
+- **Atoms**: "Use this JSON schema: {...}", "Structure like this paragraph: [Quote]".
 - **Logic**: Provides a "one-shot" or "few-shot" pattern for the AI to emulate.
 
 ## The SP-Atom Principle
