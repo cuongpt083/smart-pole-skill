@@ -48,6 +48,25 @@ Skill này được xây dựng thông qua quy trình **Reverse Engineering** (D
 
 ---
 
+## ⚡ Quick Start / Bắt Đầu Nhanh
+**English**:
+1. **Pick a mode**:
+   - **Instructor** (learn + iterate): use `prompts/system_prompt.md` or `SKILL.md`.
+   - **Enforcer** (agentic workflow): use `prompts/system_prompt_enforcer.md` or `SKILL_ENFORCER.md`.
+2. **Load the prompt** into your tool's system/custom instructions.
+3. **Start with a vague request** and let SMART POLE ask for missing atoms.
+4. **Platform notes**: See `docs/compatibility.md` for tool-specific loading tips.
+
+**Tiếng Việt**:
+1. **Chọn chế độ**:
+   - **Instructor** (học + tinh chỉnh): dùng `prompts/system_prompt.md` hoặc `SKILL.md`.
+   - **Enforcer** (workflow tự động): dùng `prompts/system_prompt_enforcer.md` hoặc `SKILL_ENFORCER.md`.
+2. **Nạp prompt** vào phần system/custom instructions của công cụ.
+3. **Bắt đầu bằng yêu cầu mơ hồ** và để SMART POLE hỏi thêm các atom còn thiếu.
+4. **Ghi chú nền tảng**: Xem `docs/compatibility.md` để biết cách nạp cho từng công cụ.
+
+---
+
 ## 🚀 How to Use / Hướng Dẫn Sử Dụng
 This project provides two modes of operation. Choose the one that fits your workflow.
 *Dự án cung cấp 2 chế độ hoạt động. Hãy chọn chế độ phù hợp với workflow của bạn.*
@@ -109,4 +128,3 @@ Dự án này được xây dựng dựa trên framework **SMART POLE**, thành 
 
 > [!NOTE]
 > Connect with the author: [Nam Vihelm on Facebook](https://www.facebook.com/nam.vihelm)
-

@@ -1,6 +1,9 @@
----
 name: SMART POLE Instructor
 description: A Skill that analyzes and transforms vague prompts into high-precision Master Prompts using the SMART POLE framework.
+tools:
+  - ChatGPT Codex
+  - Claude Code
+  - OpenCode
 ---
 
 # SMART POLE Instructor Skill
@@ -11,7 +14,7 @@ This Skill implements the **SMART POLE** framework for prompt engineering. It ac
 
 1. **Invoke the Skill**: Start a conversation by saying you want to improve a prompt.
 2. **Provide your Prompt**: Paste the vague or draft prompt you have.
-3. **Receive Analysis**: The Skill will list the **SP-flaws** (missing categories).
+3. **Receive Analysis**: The Skill will list the **SP-flaws** (missing categories). (Note: Models like Claude will use `<thinking>` tags for this).
 4. **Iterate**: Answer the questions or add the atoms suggested.
 5. **Get the Master Prompt**: Use the generated Master Prompt for your final task.
 

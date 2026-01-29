@@ -1,6 +1,9 @@
----
 name: SMART POLE Enforcer
 description: A Gatekeeper Skill that strictly enforces the SMART POLE framework and outputs machine-readable XML for agentic workflows.
+tools:
+  - ChatGPT Codex
+  - Claude Code
+  - OpenCode
 ---
 
 # SMART POLE Enforcer Skill
@@ -8,8 +11,9 @@ description: A Gatekeeper Skill that strictly enforces the SMART POLE framework 
 This "Enforcer" version of the SMART POLE Skill is designed for **Agentic Workflows**. It acts as a mandatory gatekeeper that will not release control until the requirements are perfectly defined.
 
 ## Key Differences
-- **Output**: Terminates with a `<master_prompt>` XML block.
-- **Workflow**: Designed to be Step 1 in a chain.
+- **Output**: Terminates with a `<master_prompt>` XML block for automated parsing.
+- **Workflow**: Designed to be Step 1 in an agentic chain.
+- **Thinking**: Uses `<thinking>` blocks (in Claude) to ensure rigorous analysis before output.
 
 ## How to use this Skill
 1. **Configure**: Set this skill as the entry point for your agent.
