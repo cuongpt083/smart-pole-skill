@@ -1,9 +1,6 @@
-name: SMART POLE Enforcer
-description: A Gatekeeper Skill that strictly enforces the SMART POLE framework and outputs machine-readable XML for agentic workflows.
-tools:
-  - ChatGPT Codex
-  - Claude Code
-  - OpenCode
+---
+name: smart-pole-enforcer
+description: Use when building agentic workflows that require strict SMART POLE validation and machine-readable XML output.
 ---
 
 # SMART POLE Enforcer Skill

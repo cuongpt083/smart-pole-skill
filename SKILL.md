@@ -1,9 +1,6 @@
-name: SMART POLE Instructor
-description: A Skill that analyzes and transforms vague prompts into high-precision Master Prompts using the SMART POLE framework.
-tools:
-  - ChatGPT Codex
-  - Claude Code
-  - OpenCode
+---
+name: smart-pole-instructor
+description: Use when a user provides a vague prompt and needs structured clarification to produce a precise master prompt.
 ---
 
 # SMART POLE Instructor Skill
@@ -45,4 +42,3 @@ Here are some **SP-atoms** to add..."
 
 ## Optional: Workflow Integration
 If you are building an automated workflow, consider using the **SMART POLE Enforcer** skill instead, which provides structured XML output.
-
