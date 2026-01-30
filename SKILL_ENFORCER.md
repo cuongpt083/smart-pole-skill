@@ -17,15 +17,17 @@ This "Enforcer" version of the SMART POLE Skill is designed for **Agentic Workfl
 2. **Execute**: The agent will interview the user.
 3. **Capture**: Watch for the XML block to trigger the next step.
 
-## The 9 Categories
-| Abbrev | Category | Focus |
-| --- | --- | --- |
-| **S** | Style | Tone, Persona, Format |
-| **M** | Mastery | Expertise level |
-| **A** | Aim | Goal and Success criteria |
-| **R** | Resource | Tools, Constraints, Budget |
-| **T** | Time | Era, Deadlines, Duration |
-| **P** | People | Audience, Values, Preferences |
-| **O** | Outline | Structure, Scope |
-| **L** | Locale | Industry, Region |
-| **E** | Example | Samples, Reference styles |
+## The 9 Categories (Weighted Scoring)
+| Abbrev | Category | Focus | Weight |
+| --- | --- | --- | --- |
+| **S** | Style | Tone, Persona, Format | 0.5 |
+| **M** | Mastery | Expertise level | 1.0 |
+| **A** | Aim | Goal and Success criteria | **2.0** 🔴 |
+| **R** | Resource | Tools, Constraints, Budget | 1.0 |
+| **T** | Time | Era, Deadlines, Duration | 0.5 |
+| **P** | People | Audience, Values, Preferences | 1.5 |
+| **O** | Outline | Structure, Scope | **2.0** 🔴 |
+| **L** | Locale | Industry (L1), Region (L2), Legal (L3), Cultural (L4) | 1.5 |
+| **E** | Example | Samples, Reference styles | 0.5 |
+
+**Max Score: 10.5 | Threshold for Master Prompt: ≥ 7.0 (67%)**

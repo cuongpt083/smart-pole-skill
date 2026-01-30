@@ -93,9 +93,10 @@ The Enforcer mode has been upgraded with the following features:
 
 | Feature | Description |
 |---|---|
-| **Readiness Score** | A 0-9 scoring system. The `<master_prompt>` is ONLY generated when the score reaches **≥ 7/9**. Each confirmed SP-category = 1 point. |
+| **Weighted Readiness Score** | A 10.5-point scoring system with category weights. Core categories (A, O) = 2.0 points each. The `<master_prompt>` is ONLY generated when score reaches **≥ 7.0/10.5 (67%)**. |
 | **Iterative Loop** | The AI is **forbidden** from generating a Master Prompt in its first response. It MUST ask clarifying questions first. |
 | **Question Protocol** | All questions are numbered and the user is explicitly asked to answer them before proceeding. No more "assumed" atoms. |
+| **Overlap Handling** | Built-in rules for handling ambiguous information: Functional Gravity Principle + One Atom One Slot. See [Overlap Rules](docs/overlap-rules.md). |
 | **Security Guardrails** | Built-in defenses against **Prompt Injection** and **Prompt Poisoning** attacks. The AI will detect and reject malicious patterns. |
 
 > [!TIP]
@@ -126,6 +127,8 @@ Sử dụng Enforcer Mode như một "Người gác cổng" trước khi chuyể
 
 ## 📚 Documentation / Tài Liệu
 - [Logic Breakdown (Chi tiết Logic)](docs/logic.md)
+- [SP Sub-categories Reference (Chi tiết Sub-categories)](docs/sub-categories.md) **NEW**
+- [Overlap Handling Rules (Quy tắc Xử lý Chồng lấn)](docs/overlap-rules.md) **NEW**
 - [System Prompt (Conversational)](prompts/system_prompt.md)
 - [System Prompt (Enforcer)](prompts/system_prompt_enforcer.md)
 

@@ -16,17 +16,23 @@ This Skill implements the **SMART POLE** framework for prompt engineering. It ac
 5. **Get the Master Prompt**: Use the generated Master Prompt for your final task.
 
 ## The 9 Categories
-| Abbrev | Category | Focus |
-| --- | --- | --- |
-| **S** | Style | Tone, Persona, Format |
-| **M** | Mastery | Expertise level |
-| **A** | Aim | Goal and Success criteria |
-| **R** | Resource | Tools, Constraints, Budget |
-| **T** | Time | Era, Deadlines, Duration |
-| **P** | People | Audience, Values, Preferences |
-| **O** | Outline | Structure, Scope |
-| **L** | Locale | Environment, Industry, Region |
-| **E** | Example | Samples, Reference styles |
+| Abbrev | Category | Focus | Priority |
+| --- | --- | --- | --- |
+| **S** | Style | Tone, Persona, Format | 🟢 Accelerator |
+| **M** | Mastery | Expertise level | 🟡 Contextualizer |
+| **A** | Aim | Goal and Success criteria | 🔴 **CORE** |
+| **R** | Resource | Tools, Constraints, Budget | 🟡 Contextualizer |
+| **T** | Time | Era, Deadlines, Duration | 🟢 Accelerator |
+| **P** | People | Audience, Values, Preferences | 🟡 Contextualizer |
+| **O** | Outline | Structure, Scope | 🔴 **CORE** |
+| **L** | Locale | Industry, Region, Legal, Cultural | 🟡 Contextualizer |
+| **E** | Example | Samples, Reference styles | 🟢 Accelerator |
+
+### Locale Sub-dimensions (L1-L4)
+- **L1**: Industry/Domain (Banking, Healthcare, E-commerce...)
+- **L2**: Geography/Region (Vietnam, EU, Singapore...)
+- **L3**: Legal/Regulatory (GDPR, PCI-DSS...)
+- **L4**: Cultural/Social (Local customs, social norms...)
 
 ## Example Interaction
 
