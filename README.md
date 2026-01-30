@@ -88,6 +88,19 @@ This project provides two modes of operation. Choose the one that fits your work
     ```
 - *Phù hợp cho*: Các quy trình tự động hóa (Agentic Workflow). AI sẽ **KHÔNG** nhả kết quả cho đến khi prompt hoàn hảo. Nó sẽ kết thúc bằng một block XML để máy có thể đọc.*
 
+### ✨ Enforcer v2.0 Enhancements (New!)
+The Enforcer mode has been upgraded with the following features:
+
+| Feature | Description |
+|---|---|
+| **Readiness Score** | A 0-9 scoring system. The `<master_prompt>` is ONLY generated when the score reaches **≥ 7/9**. Each confirmed SP-category = 1 point. |
+| **Iterative Loop** | The AI is **forbidden** from generating a Master Prompt in its first response. It MUST ask clarifying questions first. |
+| **Question Protocol** | All questions are numbered and the user is explicitly asked to answer them before proceeding. No more "assumed" atoms. |
+| **Security Guardrails** | Built-in defenses against **Prompt Injection** and **Prompt Poisoning** attacks. The AI will detect and reject malicious patterns. |
+
+> [!TIP]
+> This ensures a thorough brainstorming session between you and the AI, leading to a higher quality Master Prompt.
+
 ---
 
 ## 💻 For Developers: "VIBE Coding"
