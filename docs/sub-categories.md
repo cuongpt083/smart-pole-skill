@@ -45,6 +45,10 @@ This document provides detailed sub-dimensions for each of the 9 SMART POLE cate
 | **User Mastery** | Your own skill level | Novice, Intermediate, Expert |
 | **Target Mastery** | Intended audience level | ELI5, PhD, Senior Developer |
 | **Skill Context** | Specific strengths/gaps | "Giỏi Toán nhưng mù về lập trình" |
+| **Skill Gap Detection** | Gap between domain and task expertise | "Senior Civil Engineer (domain) but zero Python experience (task)" |
+
+> [!TIP]
+> Always probe the **GAP** between domain mastery and task mastery. A "10-year Civil Engineer" learning Python needs engineering analogies for coding concepts — a totally different approach than teaching a CS student.
 
 ---
 
@@ -53,8 +57,11 @@ This document provides detailed sub-dimensions for each of the 9 SMART POLE cate
 | Sub-dimension | Description | Examples |
 |---------------|-------------|----------|
 | **Primary Goal** | What you want to achieve | Problem-solving, Brainstorming, Research |
-| **Evaluation Criteria** | How to judge success | "Dưới 200 chữ", "Tiết kiệm điện nhất" |
+| **Evaluation Criteria** ⚠️ | How to judge success (**MANDATORY**) | "Dưới 200 chữ", "Tiết kiệm điện nhất" |
 | **Desired Outcome** | Expected deliverable | Action plan, Code, Menu, Report |
+
+> [!WARNING]
+> **Evaluation Criteria is not optional.** The original SMART POLE bot rejects broad goals like "build a checklist" without criteria. Always include HOW SUCCESS IS MEASURED (e.g., "checklist that passes internal audit review" is Aim; "checklist with 3 sections" is Outline).
 
 ---
 
@@ -99,6 +106,10 @@ This document provides detailed sub-dimensions for each of the 9 SMART POLE cate
 | **Structure** | Organization | "3 chương: Mở - Thân - Kết" |
 | **Technical Specs** | Requirements | "Python 3.10", "Kích thước 10x20cm" |
 | **Focus Areas** | Emphasis | "Nhấn mạnh bảo mật hơn tốc độ" |
+| **Standards Compliance Format** | Professional standard formatting | "ISO/IEC 27001 audit layout", "GDPR report template" |
+
+> [!IMPORTANT]
+> When a user mentions professional standards (ISO, GDPR, PCI-DSS), clarify: is this a **content** requirement (→ Locale L3) or a **format** requirement (→ Outline)? See [Overlap Rules - Rule 5](overlap-rules.md#rule-5-professional-standards-disambiguation).
 
 ---
 
@@ -144,3 +155,11 @@ This document provides detailed sub-dimensions for each of the 9 SMART POLE cate
 3. **Use sub-dimensions as a checklist** when you get unsatisfying AI responses - often a missing sub-dimension is the culprit.
    
    *Sử dụng sub-dimensions như một checklist khi bạn nhận được câu trả lời không hài lòng.*
+
+4. **Watch for conflicts** - If two sub-dimensions contradict each other (e.g., Style "Shakespearean" + Outline "ISO format"), resolve before proceeding. See [Overlap Rules - Rule 4](overlap-rules.md#rule-4-atom-conflict-detection).
+
+   *Chú ý xung đột - Nếu hai sub-dimensions mâu thuẫn, giải quyết trước khi tiếp tục.*
+
+5. **Probe Mastery gaps** - When a user states expertise, always check if it applies to the specific task or just their general domain.
+
+   *Thăm dò khoảng cách Mastery - Khi người dùng nêu chuyên môn, luôn kiểm tra liệu nó áp dụng cho nhiệm vụ cụ thể hay chỉ lĩnh vực chung.*

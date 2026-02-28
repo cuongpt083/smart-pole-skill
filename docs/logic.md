@@ -18,6 +18,11 @@ The SMART POLE framework is designed to eliminate the "guessing" that AI does wh
 - **Concept**: Who is the user? What is their cognitive load capacity?
 - **Atoms**: "Senior Architect (High context)," "5-year-old child (Low context)," "Intermediate knitter."
 - **Logic**: Prevents "average" explanations by locking into a specific expertise tier for the *explanation*.
+- **Domain vs Task Mastery (v3.1)**: Always distinguish between:
+  - **Domain Mastery**: Expertise in the user's professional field (e.g., "10-year Civil Engineer")
+  - **Task Mastery**: Expertise in the specific task being requested (e.g., "first time programming")
+  - **The Gap**: A user can have high Domain Mastery but zero Task Mastery. This gap dramatically changes how the AI should respond.
+  - *Example*: "Senior DevOps Engineer" (Domain) + "Never written a business plan" (Task) = must explain business concepts using engineering analogies.
 
 ### 3. A - Aim (The Objective & Scorecard)
 - **Concept**: The specific result and how it will be judged.
@@ -86,6 +91,38 @@ A prompt is not a block of text; it is a collection of **Atoms**.
 ## The SP-Flaw Principle
 A flaw is an "empty bucket". If you don't fill the "Resource" bucket, the AI will reach into its general training data and grab a random resource. This leads to hallucinations or generic advice.
 
+## The Teach-First Principle (v3.1)
+Before analyzing a user's prompt, always introduce the framework concepts first:
+1. **Define**: SP-cat (9 context categories), SP-atom (single indivisible fact), SP-flaw (a missing atom).
+2. **Illustrate**: Use 2-3 quick examples from the user's domain.
+3. **Adapt Metaphor**: Frame the framework using a metaphor the user instantly understands:
+   - DevOps → "IaC for prompts"
+   - Business → "Business Plan for AI"
+   - Medical → "Diagnostic Protocol for queries"
+4. **Skip on Follow-ups**: Only teach in the first interaction. In subsequent messages, jump to analysis.
+
+**Why**: The original SMART POLE helper bot consistently teaches before analyzing. This creates a shared vocabulary with the user, making subsequent exchanges more efficient and precise.
+
+## Atom Conflict Resolution (v3.1)
+Unlike overlap (same info fitting two slots), a **conflict** occurs when two atoms cannot logically coexist:
+- Style "Shakespearean" + Outline "ISO-compliant" = paradoxical
+- Resource "$0 budget" + Aim "professional video ad" = impossible
+- Time "5 minutes" + Outline "10 chapters" = unrealistic
+
+**Resolution Protocol**:
+1. Flag: `⚡ SP-conflict: [Atom A] vs [Atom B]`
+2. Ask the user which takes priority
+3. Never auto-resolve — the user must decide
+4. Conflicts must be resolved BEFORE scoring readiness
+
+## Active Application Exercise (v3.1)
+Every response should end with an interactive exercise, not a passive explanation:
+1. Present a "naked query" in the user's domain
+2. Ask the user to identify 3 SP-flaws
+3. Include a bonus question about commonly confused pairs (Aim vs Outline, Mastery vs People)
+
+**Why**: Active exercises create deeper learning than passive explanations. The user develops the ability to THINK in SP-atoms independently.
+
 ## Weighted Readiness Scoring (v3.0)
 To scientifically measure prompt quality, we assign weights to categories based on their impact:
 
@@ -93,8 +130,9 @@ To scientifically measure prompt quality, we assign weights to categories based 
 |---|---|---|
 | **Aim / Outline** | **2.0** | **CORE**: Without these, the request is structureless. |
 | **Locale** | **CONDITIONAL** | **CORE (2.0)** for Advisory/Discovery, **1.5** for Generative, **0.5** for Deterministic |
+| **Example** | **CONDITIONAL** | **1.5** for Deterministic (sample I/O critical), **1.0** for Advisory, **0.5** for Generative |
 | **People / Mastery / Resource** | **1.5 / 1.0** | **CONTEXTUALIZER**: Defines the constraints and flavor. |
-| **Time / Style / Example** | **0.5** | **ACCELERATOR**: Enhances quality but not mandatory for logic. |
+| **Time / Style** | **0.5** | **ACCELERATOR**: Enhances quality but not mandatory for logic. |
 
 ### Task-Type Classification
 The system automatically classifies requests into 5 types:
@@ -118,12 +156,24 @@ An SP-atom must be **indivisible** and formatted as: `Category: Sub-type - Speci
 | "Use Reciprocity" | `Style: Persuasion strategy - Reciprocity (cite past favor)` |
 | "For beginners" | `Mastery: Skill level - Complete novice, no prior exposure` |
 
+## Atom Quality Tiers (v3.1)
+Not all atoms are equal. The original SMART POLE framework distinguishes three quality levels:
+
+| Grade | Criteria | Score Impact | Example |
+|-------|----------|-------------|----------|
+| **🟢 Strong** | Specific, indivisible, actionable, with concrete detail | Full weight | `Example: Input=[{"name":"Alice","age":30}], Output=sorted by age ascending` |
+| **🟡 Adequate** | Present and classifiable, but could be sharper | 75% weight | `Example: "Use a 4-column table format"` |
+| **🔴 Weak** | Too vague to guide the AI meaningfully | 50% weight | `Example: "Make it look nice"` |
+
+**Why This Matters**:
+The original SMART POLE helper bot actively grades atom quality. When a user provides a "4-column table format" as an Example, the bot accepts it but says: *"Pro-Tip: Providing a 'Gold Standard' example you've liked in the past would be an even stronger Example atom."* This pushes users toward Strong atoms without rejecting their Adequate ones.
+
 ## Consequence Linking (v3.0)
 When identifying SP-flaws, always state the **technical consequence** if the flaw is left unfilled.
 
 **Template**:
-> ⚠️ **SP-flaw (X)**: [What's missing]. 
-> 🔻 **If unfilled**: [What AI will do wrong / What user will lose].
+> ⚠️ **SP-cat-X (Name)**: [What's missing]. 
+> 🔻 **If unfilled**: [Vivid description of the AI's wrong behavior / What user will lose].
 
 ## Aim vs Outline Distinction (v3.0)
 These two categories are often confused. Here's the clear distinction:

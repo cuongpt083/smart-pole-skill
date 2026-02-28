@@ -128,6 +128,21 @@ Double-counting inflates the Readiness Score artificially, leading to:
 
 ---
 
+### 5. Mastery (M): Domain vs Task
+
+| Information | Correct Classification | Why |
+|-------------|----------------------|-----|
+| "Tôi là kỹ sư xây dựng 10 năm" | **Domain Mastery** (high) | Expertise in their field |
+| "Tôi chưa bao giờ lập trình" | **Task Mastery** (zero) | No experience in the specific task |
+| "Senior DevOps engineer" | **Domain Mastery** (high) | Role expertise |
+| "First time writing a business plan" | **Task Mastery** (zero) | Specific task experience |
+
+**Rule of Thumb**: Always probe the GAP between domain mastery and task mastery. A "10-year Civil Engineer" learning Python has a massive gap that changes everything.
+
+*Luôn thăm dò KHOẢNG CÁCH giữa chuyên môn lĩnh vực và chuyên môn nhiệm vụ. Một "Kỹ sư Xây dựng 10 năm" học Python có khoảng cách rất lớn.*
+
+---
+
 ## Gray Zones / Vùng Xám
 
 These are especially tricky cases. When in doubt, **ask for clarification**:
@@ -148,8 +163,62 @@ When analyzing a user prompt:
 2. ☐ For each atom, identify PRIMARY intent
 3. ☐ Assign to ONE category only
 4. ☐ Do NOT double-count
-5. ☐ If ambiguous, apply Functional Gravity
-6. ☐ If still unclear, ask user for clarification
+5. ☐ Check for CONFLICTS between atoms
+6. ☐ If professional standards mentioned, clarify content vs format
+7. ☐ If ambiguous, apply Functional Gravity
+8. ☐ If still unclear, ask user for clarification
+
+---
+
+## Rule 4: Atom Conflict Detection / Phát Hiện Xung Đột Atom
+
+> **When two or more atoms CONTRADICT each other, flag them as SP-conflict and require resolution.**
+>
+> *Khi hai hoặc nhiều atom MÂU THUẬN nhau, đánh dấu là SP-conflict và yêu cầu giải quyết.*
+
+### What is a Conflict? / Xung Đột Là Gì?
+
+A conflict is NOT the same as overlap. Overlap = same info fits two slots. Conflict = two atoms that cannot logically coexist.
+
+*Xung đột KHÔNG giống như chồng lấn. Chồng lấn = cùng thông tin phù hợp hai ô. Xung đột = hai atom không thể cùng tồn tại.*
+
+### Examples / Ví Dụ:
+
+| Atom A | Atom B | Conflict Type |
+|--------|--------|---------------|
+| Style: "Write like Shakespeare" | Outline: "ISO-compliant format" | ⚡ Tone vs Structure |
+| Resource: "Budget $0" | Aim: "Professional video ad" | ⚡ Constraint vs Goal |
+| Mastery: "ELI5" | Example: "Use this PhD-level paper" | ⚡ Level vs Reference |
+| Time: "5 minutes" | Outline: "10 chapters" | ⚡ Duration vs Scope |
+
+### Resolution Protocol / Quy Trình Giải Quyết:
+
+1. **Flag**: `⚡ SP-conflict: [Atom A] vs [Atom B]`
+2. **Ask**: "These two atoms clash. Which one takes priority?"
+3. **Wait**: Conflicts MUST be resolved before scoring. Do NOT auto-resolve.
+
+---
+
+## Rule 5: Professional Standards Disambiguation / Phân Biệt Tiêu Chuẩn Chuyên Nghiệp
+
+> **When a user mentions professional standards (ISO, GDPR, HIPAA, PCI-DSS, etc.), always clarify: content or format?**
+>
+> *Khi người dùng đề cập tiêu chuẩn (ISO, GDPR...), luôn hỏi rõ: yêu cầu về nội dung hay định dạng?*
+
+### Classification / Phân Loại:
+
+| Standard Mention | User Intent | Correct Category |
+|------------------|-------------|------------------|
+| "GDPR compliant data handling" | Content requirement | **Locale (L3 - Legal)** |
+| "Format it like a GDPR audit report" | Format requirement | **Outline (O - Structure)** |
+| "ISO 27001 security controls" | Content requirement | **Locale (L3 - Legal)** |
+| "ISO-compliant document layout" | Format requirement | **Outline (O - Structure)** |
+
+### Clarification Template / Mẫu Hỏi:
+
+> "You mentioned [standard]. Does this apply to the **content** (e.g., the actual data/advice must follow [standard] rules) or the **format** (e.g., the output should look like a [standard] document)?"
+
+*"Bạn đề cập [tiêu chuẩn]. Điều này áp dụng cho **nội dung** (dữ liệu phải tuân thủ [tiêu chuẩn]) hay **định dạng** (kết quả phải trông như tài liệu [tiêu chuẩn])?"*
 
 ---
 
