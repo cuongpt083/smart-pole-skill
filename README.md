@@ -53,6 +53,7 @@ Skill này được xây dựng thông qua quy trình **Reverse Engineering** (D
 1. **Pick a mode**:
    - **Instructor** (learn + iterate): use `prompts/system_prompt.md` or `SKILL.md`.
    - **Enforcer** (agentic workflow): use `prompts/system_prompt_enforcer.md` or `SKILL_ENFORCER.md`.
+   - **Coding Agent** (code tasks): use `prompts/system_prompt_coding_agent.md` or `SKILL_CODING_AGENT.md`.
 2. **Load the prompt** into your tool's system/custom instructions.
 3. **Start with a vague request** and let SMART POLE ask for missing atoms.
 4. **Platform notes**: See `docs/compatibility.md` for tool-specific loading tips.
@@ -61,6 +62,7 @@ Skill này được xây dựng thông qua quy trình **Reverse Engineering** (D
 1. **Chọn chế độ**:
    - **Instructor** (học + tinh chỉnh): dùng `prompts/system_prompt.md` hoặc `SKILL.md`.
    - **Enforcer** (workflow tự động): dùng `prompts/system_prompt_enforcer.md` hoặc `SKILL_ENFORCER.md`.
+   - **Coding Agent** (tác vụ lập trình): dùng `prompts/system_prompt_coding_agent.md` hoặc `SKILL_CODING_AGENT.md`.
 2. **Nạp prompt** vào phần system/custom instructions của công cụ.
 3. **Bắt đầu bằng yêu cầu mơ hồ** và để SMART POLE hỏi thêm các atom còn thiếu.
 4. **Ghi chú nền tảng**: Xem `docs/compatibility.md` để biết cách nạp cho từng công cụ.
@@ -68,8 +70,8 @@ Skill này được xây dựng thông qua quy trình **Reverse Engineering** (D
 ---
 
 ## 🚀 How to Use / Hướng Dẫn Sử Dụng
-This project provides two modes of operation. Choose the one that fits your workflow.
-*Dự án cung cấp 2 chế độ hoạt động. Hãy chọn chế độ phù hợp với workflow của bạn.*
+This project provides three modes of operation. Choose the one that fits your workflow.
+*Dự án cung cấp 3 chế độ hoạt động. Hãy chọn chế độ phù hợp với workflow của bạn.*
 
 ### 1. Standard Mode (Conversational) / Chế độ Tiêu chuẩn (Hội thoại)
 - **File**: `SKILL.md`
@@ -87,6 +89,14 @@ This project provides two modes of operation. Choose the one that fits your work
     <master_prompt> ... </master_prompt>
     ```
 - *Phù hợp cho*: Các quy trình tự động hóa (Agentic Workflow). AI sẽ **KHÔNG** nhả kết quả cho đến khi prompt hoàn hảo. Nó sẽ kết thúc bằng một block XML để máy có thể đọc.*
+
+### 3. Coding Agent Mode (v4.0 — NEW) / Chế độ Coding Agent
+- **File**: `SKILL_CODING_AGENT.md`
+- **Focus**: AI Coding Agents (OpenAI Codex, Anthropic Claude Code, Google Gemini Code Assist).
+- **Best for**: Coding tasks where the agent operates on a codebase — editing files, running tests, using terminal.
+- **Usage**: Load the skill into your coding agent. It will auto-extract context from project configs and apply a 7-step agentic CoT workflow: `ORIENT → CLASSIFY → EXTRACT → DETECT FLAWS → PLAN → EXECUTE → VERIFY → REPORT`.
+- **Docs**: See [Coding Agent Categories](docs/coding-agent-categories.md) for detailed code-native category reference.
+- *Phù hợp cho*: Các tác vụ lập trình khi agent thao tác trên codebase — sửa file, chạy test, dùng terminal. Agent sẽ tự động trích xuất ngữ cảnh từ cấu hình dự án.*
 
 ### ✨ Enforcer v2.0 Enhancements (New!)
 The Enforcer mode has been upgraded with the following features:

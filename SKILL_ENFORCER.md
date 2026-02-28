@@ -28,8 +28,10 @@ This "Enforcer" version of the SMART POLE Skill is designed for **Agentic Workfl
 | **P** | People | Audience, Values, Preferences | 1.5 |
 | **O** | Outline | Structure, Scope | **2.0** 🔴 |
 | **L** | Locale | Industry (L1), Region (L2), Legal (L3), Cultural (L4) | **CONDITIONAL** |
-| **E** | Example | Samples, Reference styles | 0.5 |
+| **E** | Example | Samples, Reference styles | **CONDITIONAL** |
 
 **Locale Conditional Core**: If Aim is domain-sensitive (legal, finance, healthcare, HR, cross-border, culture-sensitive) → Locale becomes 🔴 Core (weight 2.0). Otherwise → 🟡 Contextualizer (weight 1.5).
+
+**Example Conditional Weight (v3.1)**: For Deterministic tasks (code, algorithms) → Example = 🟡 1.5. For Advisory → 1.0. For Generative → 🟢 0.5.
 
 **Threshold**: ≥ 67% + All Core categories confirmed
