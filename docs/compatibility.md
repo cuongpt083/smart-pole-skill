@@ -8,7 +8,7 @@ ChatGPT works best when the system prompt is pasted into the "Custom Instruction
 - **Step 1**: Copy the content of `prompts/system_prompt.md`.
 - **Step 2**: Go to **ChatGPT > Customize ChatGPT > How would you like ChatGPT to respond?**
 - **Step 3**: Paste the prompt there.
-- **Tip**: If using for workflows, use `prompts/system_prompt_enforcer.md` instead.
+- **Tip**: If using a custom chat-agent workflow, use `prompts/system_prompt_enforcer.md` with `SKILL_CHAT_AGENT_ENFORCER.md`.
 
 ## 2. Claude Code
 Claude Code (and Claude.ai) has excellent support for structured thinking.
@@ -20,7 +20,7 @@ Claude Code (and Claude.ai) has excellent support for structured thinking.
 ## 3. OpenCode / General LLMs
 For OpenCode or any other model (Llama 3, DeepSeek, etc.):
 
-- **System Role**: If the interface allows setting a "System Role/Prompt," use the content of `prompts/system_prompt.md` (Instructor) or `prompts/system_prompt_enforcer.md` (Enforcer).
+- **System Role**: If the interface allows setting a "System Role/Prompt," use the content of `prompts/system_prompt.md` (Instructor) or `prompts/system_prompt_enforcer.md` (Chat Enforcer).
 - **Few-Shot**: These models benefit greatly from the **Example (E)** category in the SMART POLE framework. Ensure you provide a concrete example if the model seems to struggle with the persona.
 
 ## 4. Summary of Tags

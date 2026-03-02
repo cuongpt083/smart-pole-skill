@@ -141,6 +141,39 @@ This document provides the detailed sub-dimensions, examples, and auto-detection
 
 ---
 
+## Task Taxonomy Mapping (Generic → Coding)
+
+Use this table to resolve classification ambiguity between generic SMART POLE task types (`docs/logic.md`) and coding-agent task types.
+
+| Generic Task Type (`docs/logic.md`) | Typical Coding Task Type(s) | Coding-Agent Implication |
+|-----------|----------------|----------------|
+| **Deterministic** | Bug Fix, Refactor | Require reproducible failure/success criteria; prioritize regression tests |
+| **Generative** | Feature | Require explicit DoD and strict file-scope boundaries before implementation |
+| **Advisory** | Refactor, Migration, Infra | Convert recommendations into measurable acceptance criteria before coding |
+| **Discovery** | Feature spike, Migration assessment | Allow exploratory analysis, but keep code changes minimal and reversible |
+| **Compliance** | Infra, Migration, Bug Fix | Treat legal/security constraints as non-optional acceptance criteria |
+
+---
+
+## Hard-Stop Execution Gates
+
+Before `EXECUTE`, all gates below must pass:
+
+1. **Aim Gate (A)**: At least one testable acceptance criterion is confirmed.
+2. **Outline Gate (O)**: Authorized scope is explicit (or minimal by default), and forbidden scope is explicit.
+3. **Conflict Gate**: No unresolved `SP-conflict` remains.
+4. **Overlap Gate**: `One Atom, One Slot` is enforced (no double-counting).
+5. **Score Gate**: Weighted readiness score is **>= 67%** of the applicable max score (see `docs/logic.md`).
+
+If any gate fails:
+- Stop execution
+- Ask clarification questions
+- Re-check gates after user answers
+
+Reference: `docs/overlap-rules.md` for Functional Gravity, overlap, and conflict protocols.
+
+---
+
 ## Usage Tips for Coding Agents
 
 1. **Auto-detect first, ask second**: Parse project configs before asking the user for context. Most S, L, and R atoms can be inferred.

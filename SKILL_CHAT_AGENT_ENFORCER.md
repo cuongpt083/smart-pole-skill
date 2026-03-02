@@ -1,15 +1,18 @@
 ---
-name: smart-pole-enforcer
-description: Use when building agentic workflows that require strict SMART POLE validation and machine-readable XML output.
+name: smart-pole-chat-enforcer
+description: Use for custom chat agents (Custom GPTs, Gemini Gems, chatbot workflows) that require strict SMART POLE validation and machine-readable XML output. Not for coding-agent code execution workflows.
 ---
 
-# SMART POLE Enforcer Skill
+# SMART POLE Chat Enforcer Skill
 
-This "Enforcer" version of the SMART POLE Skill is designed for **Agentic Workflows**. It acts as a mandatory gatekeeper that will not release control until the requirements are perfectly defined.
+This "Chat Enforcer" version of SMART POLE is designed for **chat-agent workflows**. It acts as a mandatory gatekeeper that will not release control until requirements are clearly defined.
+
+> Scope: Prompt refinement and `<master_prompt>` handoff only.  
+> Not suitable for coding-agent execution workflows (file edits, terminal commands, test execution).
 
 ## Key Differences
 - **Output**: Terminates with a `<master_prompt>` XML block for automated parsing.
-- **Workflow**: Designed to be Step 1 in an agentic chain.
+- **Workflow**: Designed to be Step 1 in a chat-agent chain.
 - **Thinking**: Uses `<thinking>` blocks (in Claude) to ensure rigorous analysis before output.
 
 ## How to use this Skill

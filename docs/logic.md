@@ -147,6 +147,27 @@ The system automatically classifies requests into 5 types:
 
 **Threshold**: A prompt is considered "Master/Gemini-Ready" only when it achieves a score of **≥ 67%** AND all required Core categories are confirmed.
 
+### Generic-to-Coding Task Mapping
+Use this mapping when SMART POLE is applied to coding agents:
+
+| Generic Task Type | Coding Task Type(s) | Execution Intent |
+|-----------|----------------|----------------|
+| **Deterministic** | Bug Fix, Refactor | Reproducible behavior change with regression safety |
+| **Generative** | Feature | Add new capability with explicit Definition of Done |
+| **Advisory** | Refactor, Migration, Infra | Convert recommendations into measurable acceptance criteria before coding |
+| **Discovery** | Feature spike, Migration assessment | Explore options first, keep code changes minimal and reversible |
+| **Compliance** | Infra, Migration, Bug Fix | Treat legal/security constraints as mandatory acceptance criteria |
+
+### Coding-Agent Execution Eligibility
+For coding-agent execution (file edits, tests, terminal operations), the task is execution-ready only when:
+
+1. Weighted readiness score is **>= 67%** of the applicable max score
+2. Core categories **A (Aim)** and **O (Outline)** are confirmed
+3. All `SP-conflict` items are resolved
+4. Overlap rule `One Atom, One Slot` is enforced (no double-counting)
+
+If any condition fails, the agent must stop and request clarification before execution.
+
 ## Atom Granularity (v3.0)
 An SP-atom must be **indivisible** and formatted as: `Category: Sub-type - Specific value`.
 
