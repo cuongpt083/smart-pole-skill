@@ -52,7 +52,7 @@ Skill này được xây dựng thông qua quy trình **Reverse Engineering** (D
 **English**:
 1. **Pick a mode**:
    - **Instructor** (learn + iterate): use `prompts/system_prompt.md` or `SKILL.md`.
-   - **Enforcer** (agentic workflow): use `prompts/system_prompt_enforcer.md` or `SKILL_ENFORCER.md`.
+   - **Chat Enforcer** (custom chat-agent workflow): use `prompts/system_prompt_enforcer.md` or `SKILL_CHAT_AGENT_ENFORCER.md`.
    - **Coding Agent** (code tasks): use `prompts/system_prompt_coding_agent.md` or `SKILL_CODING_AGENT.md`.
 2. **Load the prompt** into your tool's system/custom instructions.
 3. **Start with a vague request** and let SMART POLE ask for missing atoms.
@@ -61,7 +61,7 @@ Skill này được xây dựng thông qua quy trình **Reverse Engineering** (D
 **Tiếng Việt**:
 1. **Chọn chế độ**:
    - **Instructor** (học + tinh chỉnh): dùng `prompts/system_prompt.md` hoặc `SKILL.md`.
-   - **Enforcer** (workflow tự động): dùng `prompts/system_prompt_enforcer.md` hoặc `SKILL_ENFORCER.md`.
+   - **Chat Enforcer** (workflow cho chat-agent): dùng `prompts/system_prompt_enforcer.md` hoặc `SKILL_CHAT_AGENT_ENFORCER.md`.
    - **Coding Agent** (tác vụ lập trình): dùng `prompts/system_prompt_coding_agent.md` hoặc `SKILL_CODING_AGENT.md`.
 2. **Nạp prompt** vào phần system/custom instructions của công cụ.
 3. **Bắt đầu bằng yêu cầu mơ hồ** và để SMART POLE hỏi thêm các atom còn thiếu.
@@ -80,26 +80,27 @@ This project provides three modes of operation. Choose the one that fits your wo
 - **Usage**: Load the skill and chat naturally. The AI will act as a teacher.
 - *Phù hợp cho*: Người mới bắt đầu muốn học cách viết prompt hoặc tinh chỉnh thủ công. AI sẽ đóng vai giáo viên hướng dẫn.*
 
-### 2. Enforcer Mode (Workflow) / Chế độ Cưỡng chế (Quy trình)
-- **File**: `SKILL_ENFORCER.md`
+### 2. Chat Enforcer Mode (Workflow) / Chế độ Chat Enforcer (Quy trình)
+- **File**: `SKILL_CHAT_AGENT_ENFORCER.md`
 - **Focus**: Automation & Strictness.
-- **Best for**: Agentic Workflows, Coding pipelines, or "Gatekeeper" steps.
+- **Best for**: Custom chat-agent workflows (Custom GPTs, Gemini Gems) or "Gatekeeper" steps before downstream execution.
 - **Usage**: The AI will **NOT** output the result until it detects a perfect prompt. It ends with a machine-readable XML block:
     ```xml
     <master_prompt> ... </master_prompt>
     ```
-- *Phù hợp cho*: Các quy trình tự động hóa (Agentic Workflow). AI sẽ **KHÔNG** nhả kết quả cho đến khi prompt hoàn hảo. Nó sẽ kết thúc bằng một block XML để máy có thể đọc.*
+- *Phù hợp cho*: Workflow chat-agent (Custom GPT, Gemini Gem). AI sẽ **KHÔNG** nhả kết quả cho đến khi prompt hoàn hảo. Nó sẽ kết thúc bằng block XML để máy có thể đọc.*
 
 ### 3. Coding Agent Mode (v4.0 — NEW) / Chế độ Coding Agent
 - **File**: `SKILL_CODING_AGENT.md`
 - **Focus**: AI Coding Agents (OpenAI Codex, Anthropic Claude Code, Google Gemini Code Assist).
 - **Best for**: Coding tasks where the agent operates on a codebase — editing files, running tests, using terminal.
-- **Usage**: Load the skill into your coding agent. It will auto-extract context from project configs and apply a 7-step agentic CoT workflow: `ORIENT → CLASSIFY → EXTRACT → DETECT FLAWS → PLAN → EXECUTE → VERIFY → REPORT`.
+- **Usage**: Load the skill into your coding agent. It will auto-extract context from project configs and apply a strict 7-step execution workflow: `ORIENT → CLASSIFY → EXTRACT → DETECT FLAWS → PLAN → EXECUTE → VERIFY`.
+- **Important**: The 8-step flow with an explicit `REPORT` step is reserved for custom chat agents (e.g., Custom GPTs, Gemini Gems), not coding-agent execution mode.
 - **Docs**: See [Coding Agent Categories](docs/coding-agent-categories.md) for detailed code-native category reference.
 - *Phù hợp cho*: Các tác vụ lập trình khi agent thao tác trên codebase — sửa file, chạy test, dùng terminal. Agent sẽ tự động trích xuất ngữ cảnh từ cấu hình dự án.*
 
-### ✨ Enforcer v2.0 Enhancements (New!)
-The Enforcer mode has been upgraded with the following features:
+### ✨ Chat Enforcer v2.0 Enhancements (New!)
+The Chat Enforcer mode has been upgraded with the following features:
 
 | Feature | Description |
 |---|---|
@@ -142,7 +143,7 @@ Sử dụng Enforcer Mode như một "Người gác cổng" trước khi chuyể
 - [Overlap Handling Rules (Quy tắc Xử lý Chồng lấn)](docs/overlap-rules.md)
 - [Gemini Gem Update Guide (Hướng dẫn Gemini)](docs/gemini-gem-guide.md) **NEW**
 - [System Prompt (Conversational)](prompts/system_prompt.md)
-- [System Prompt (Enforcer)](prompts/system_prompt_enforcer.md)
+- [System Prompt (Chat Enforcer)](prompts/system_prompt_enforcer.md)
 
 ---
 

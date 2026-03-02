@@ -19,9 +19,9 @@ This Skill implements the **SMART POLE** framework adapted for **AI Coding Agent
 1. **ORIENT**: Agent scans project root (`README.md`, `AGENTS.md`, `package.json`, `Dockerfile`, etc.)
 2. **CLASSIFY**: Determine task type (Bug Fix / Feature / Refactor / Migration / Infra)
 3. **EXTRACT**: Map request to 9 code-native SP-categories
-4. **DETECT FLAWS**: Identify missing context; ask user if critical
+4. **DETECT FLAWS**: Identify missing context, overlaps, and conflicts; ask user if critical
 5. **PLAN**: Create implementation plan with file-level scope
-6. **EXECUTE**: Code changes with interleaved thinking
+6. **EXECUTE**: Apply file changes within approved scope
 7. **VERIFY**: Run tests, lint, type-check; self-heal on failures
 
 ## The 9 Code-Native Categories
@@ -58,15 +58,42 @@ This Skill implements the **SMART POLE** framework adapted for **AI Coding Agent
 | Migration | L, R, T | Incremental, backward compatible |
 | Infra | L, R, A | Infrastructure as Code, idempotent |
 
+## Task Taxonomy Mapping (Generic → Coding)
+
+Use this mapping to bridge generic SMART POLE task types in `docs/logic.md` with coding-agent task types.
+
+| Generic Task Type (`docs/logic.md`) | Coding Task Type(s) | Default Interpretation |
+|-----------|----------------|----------------|
+| Deterministic | Bug Fix, Refactor | Behavior is constrained; prioritize reproducibility and regression tests |
+| Generative | Feature | New capability; prioritize clear DoD and explicit scope boundaries |
+| Advisory | Refactor, Migration, Infra | Architecture/process guidance; convert advice into testable acceptance criteria before coding |
+| Discovery | Feature (spike), Migration (assessment) | Exploration is allowed, but execution stays minimal and reversible |
+| Compliance | Infra, Migration, Bug Fix | Regulatory/security constraints are first-class acceptance criteria |
+
+## Execution Gates (Hard Stops)
+
+Do not execute code changes until all hard-stop gates pass:
+
+1. **Gate A (Aim)**: At least one testable acceptance criterion exists.
+2. **Gate O (Outline)**: Authorized scope is explicit (or defaults to minimal scope) and forbidden scope is respected.
+3. **Gate Conflict**: All `SP-conflict` items are resolved by user decision.
+4. **Gate Overlap**: Apply `One Atom, One Slot` from `docs/overlap-rules.md`; no double-counted atoms.
+5. **Gate Score**: Weighted readiness score is **>= 67%** of the applicable max score (per `docs/logic.md` task-type weighting).
+
+If any gate fails:
+- Stop before `EXECUTE`
+- Ask targeted clarification questions
+- Re-plan only after user confirmation
+
 ## Key Differences from Chatbot Versions
 
 | Aspect | Instructor/Enforcer | Coding Agent |
 |--------|-------------------|--------------|
 | Output | Master Prompt text | Working code + passing tests |
-| CoT | Single thinking block | Interleaved thinking between tool calls |
+| Reasoning visibility | Prompt-analysis oriented | Concise decisions tied to files/tests (no explicit CoT requirement) |
 | Verification | User reviews prompt | Agent runs tests automatically |
 | Context | Conversation only | Codebase + configs + file system |
 | Self-healing | N/A | Auto-fix on test failure (max 3 attempts) |
 
 ## Optional: Integration with Other Skills
-This skill works best as **Step 0** in any coding agent workflow, ensuring sufficient context before execution begins. Pair with project-specific `AGENTS.md` or workflow files.
+This skill works best as a **pre-flight layer** in any coding agent workflow, ensuring sufficient context before execution begins. Pair with project-specific `AGENTS.md` or workflow files.

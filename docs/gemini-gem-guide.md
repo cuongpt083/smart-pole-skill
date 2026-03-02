@@ -33,7 +33,7 @@ Copy the **entire content** of one of these files:
 | Mode | File | Best For |
 |------|------|----------|
 | Instructor | `prompts/system_prompt.md` | Learning, iterating |
-| Enforcer | `prompts/system_prompt_enforcer.md` | Workflows, automation |
+| Chat Enforcer | `prompts/system_prompt_enforcer.md` | Chat-agent workflows, automation |
 
 ### Step 3: Key Sections to Include
 
@@ -114,7 +114,7 @@ After updating your Gem, test with these prompts:
 
 | File | Purpose |
 |------|---------|
-| `prompts/system_prompt_enforcer.md` | Full Enforcer mode prompt |
+| `prompts/system_prompt_enforcer.md` | Full Chat Enforcer mode prompt |
 | `docs/logic.md` | Framework logic explanation |
 | `docs/sub-categories.md` | All sub-dimensions for 9 categories |
 | `docs/overlap-rules.md` | Overlap handling rules |
