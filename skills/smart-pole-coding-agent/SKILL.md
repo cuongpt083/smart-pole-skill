@@ -60,9 +60,9 @@ This Skill implements the **SMART POLE** framework adapted for **AI Coding Agent
 
 ## Task Taxonomy Mapping (Generic → Coding)
 
-Use this mapping to bridge generic SMART POLE task types in `docs/logic.md` with coding-agent task types.
+Use this mapping to bridge generic SMART POLE task types in `references/logic.md` with coding-agent task types.
 
-| Generic Task Type (`docs/logic.md`) | Coding Task Type(s) | Default Interpretation |
+| Generic Task Type (`references/logic.md`) | Coding Task Type(s) | Default Interpretation |
 |-----------|----------------|----------------|
 | Deterministic | Bug Fix, Refactor | Behavior is constrained; prioritize reproducibility and regression tests |
 | Generative | Feature | New capability; prioritize clear DoD and explicit scope boundaries |
@@ -77,8 +77,8 @@ Do not execute code changes until all hard-stop gates pass:
 1. **Gate A (Aim)**: At least one testable acceptance criterion exists.
 2. **Gate O (Outline)**: Authorized scope is explicit (or defaults to minimal scope) and forbidden scope is respected.
 3. **Gate Conflict**: All `SP-conflict` items are resolved by user decision.
-4. **Gate Overlap**: Apply `One Atom, One Slot` from `docs/overlap-rules.md`; no double-counted atoms.
-5. **Gate Score**: Weighted readiness score is **>= 67%** of the applicable max score (per `docs/logic.md` task-type weighting).
+4. **Gate Overlap**: Apply `One Atom, One Slot` from `references/overlap-rules.md`; no double-counted atoms.
+5. **Gate Score**: Weighted readiness score is **>= 67%** of the applicable max score (per `references/logic.md` task-type weighting).
 
 If any gate fails:
 - Stop before `EXECUTE`

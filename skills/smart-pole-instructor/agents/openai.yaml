@@ -1,0 +1,4 @@
+interface:
+  display_name: "SMART POLE Instructor"
+  short_description: "Clarify vague prompts into precise master prompts"
+  default_prompt: "Use $smart-pole-instructor to turn my rough prompt into a precise master prompt."
