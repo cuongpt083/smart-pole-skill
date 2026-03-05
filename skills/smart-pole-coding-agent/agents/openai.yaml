@@ -1,0 +1,4 @@
+interface:
+  display_name: "SMART POLE Coding Agent"
+  short_description: "Harden vague coding tasks before safe code execution"
+  default_prompt: "Use $smart-pole-coding-agent to extract missing context before implementing code changes."

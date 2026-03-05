@@ -1,0 +1,4 @@
+interface:
+  display_name: "SMART POLE Chat Enforcer"
+  short_description: "Enforce strict prompt readiness with XML handoff"
+  default_prompt: "Use $smart-pole-chat-enforcer to enforce clarification and output only a final <master_prompt> XML block."
