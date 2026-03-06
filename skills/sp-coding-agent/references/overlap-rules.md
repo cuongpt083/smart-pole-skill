@@ -11,6 +11,7 @@ This document provides rules for handling information that could fit multiple SP
 ## The Problem / Vấn Đề
 
 When users provide context, some information can seem to fit multiple categories:
+
 - "I'm an experienced engineer" - Is this **Mastery** or **People**?
 - "I'm on a deserted island" - Is this **Locale** or **Resource**?
 
@@ -24,7 +25,7 @@ When users provide context, some information can seem to fit multiple categories
 >
 > *Phân loại thông tin dựa trên Ý ĐỒ CHÍNH, không phải vẻ bề ngoài.*
 
-### Examples / Ví Dụ:
+### Examples / Ví Dụ
 
 | Information | Context A → Category | Context B → Category |
 |-------------|---------------------|---------------------|
@@ -40,16 +41,17 @@ When users provide context, some information can seem to fit multiple categories
 >
 > *Mỗi SP-atom chỉ được tính điểm cho MỘT category. Không bao giờ đếm trùng.*
 
-### Why This Matters / Tại Sao Quan Trọng:
+### Why This Matters / Tại Sao Quan Trọng
 
 Double-counting inflates the Readiness Score artificially, leading to:
+
 - Premature Master Prompt generation
 - False confidence in incomplete prompts
 - Lower quality AI responses
 
 *Đếm trùng sẽ thổi phồng điểm Readiness Score, dẫn đến prompt chưa đủ tốt.*
 
-### Example Analysis / Ví Dụ Phân Tích:
+### Example Analysis / Ví Dụ Phân Tích
 
 **User input**: "Tôi là người mẹ đơn thân đang lo lắng, muốn tìm lộ trình học tiếng Anh không tốn kém"
 
@@ -153,6 +155,16 @@ These are especially tricky cases. When in doubt, **ask for clarification**:
 | "Industry expertise" | Locale or Mastery? | "Are you referring to the domain context or your skill level?" |
 | "5 minutes" | Time or Resource? | "Is this a deadline or an available time budget?" |
 
+### Coding-Agent Specific Gray Zones
+
+| Ambiguous Info | Could Be... | Ask This |
+|----------------|-------------|----------|
+| "Write unit tests" | Time (T) or Aim (A)? | **A** — test coverage is a success criterion, not a time constraint |
+| "Ask the security team" | People (P) or Resource (R)? | **R-Network** — a human contact is a resource you can draw on |
+| "The PR was similar to #1234" | Example (E) or Outline (O)? | **E** — a past PR is an anchor/reference, not a structural spec |
+| "Keep diff minimal" | Aim (A) or Outline (O)? | **O** — minimal diff is a scope/structure constraint, not an outcome metric |
+| "Senior dev" | Mastery-Domain (M) or People (P)? | **M-Domain** if measurable skill; **P** if it describes personality/values |
+
 ---
 
 ## Implementation Checklist / Checklist Triển Khai
@@ -168,6 +180,18 @@ When analyzing a user prompt:
 7. ☐ If ambiguous, apply Functional Gravity
 8. ☐ If still unclear, ask user for clarification
 
+### Coding-Agent SP-Flaw Checklist (5 Common Traps)
+
+Before executing any coding task, verify these 5 SP-flaws are NOT present:
+
+| # | Flaw Name | Detection Test | Fix |
+|---|-----------|---------------|-----|
+| 1 | **T/A/O Overlap** | Does T contain quality or completeness requirements? | Move them to A (criteria) or O (scope) |
+| 2 | **Implicit People** | Is P just "team conventions"? Are reviewer values unstated? | Add reviewer persona, coding preferences, implicit biases |
+| 3 | **Single-Dimension Mastery** | Does M only say "Senior Dev"? | Split into M-Domain (tech stack) + M-Task (specific task XP) |
+| 4 | **Tool-Only Resource** | Does R only list software? | Add R-Network (people), R-Data (logs/docs), R-Forbidden (constraints) |
+| 5 | **Vague Example** | Is E just "make it clean" or missing entirely? | Provide code snippet, similar PR, or Input→Output pair |
+
 ---
 
 ## Rule 4: Atom Conflict Detection / Phát Hiện Xung Đột Atom
@@ -182,7 +206,7 @@ A conflict is NOT the same as overlap. Overlap = same info fits two slots. Confl
 
 *Xung đột KHÔNG giống như chồng lấn. Chồng lấn = cùng thông tin phù hợp hai ô. Xung đột = hai atom không thể cùng tồn tại.*
 
-### Examples / Ví Dụ:
+### Examples / Ví Dụ
 
 | Atom A | Atom B | Conflict Type |
 |--------|--------|---------------|
@@ -191,7 +215,7 @@ A conflict is NOT the same as overlap. Overlap = same info fits two slots. Confl
 | Mastery: "ELI5" | Example: "Use this PhD-level paper" | ⚡ Level vs Reference |
 | Time: "5 minutes" | Outline: "10 chapters" | ⚡ Duration vs Scope |
 
-### Resolution Protocol / Quy Trình Giải Quyết:
+### Resolution Protocol / Quy Trình Giải Quyết
 
 1. **Flag**: `⚡ SP-conflict: [Atom A] vs [Atom B]`
 2. **Ask**: "These two atoms clash. Which one takes priority?"
@@ -205,7 +229,7 @@ A conflict is NOT the same as overlap. Overlap = same info fits two slots. Confl
 >
 > *Khi người dùng đề cập tiêu chuẩn (ISO, GDPR...), luôn hỏi rõ: yêu cầu về nội dung hay định dạng?*
 
-### Classification / Phân Loại:
+### Classification / Phân Loại
 
 | Standard Mention | User Intent | Correct Category |
 |------------------|-------------|------------------|
@@ -214,7 +238,7 @@ A conflict is NOT the same as overlap. Overlap = same info fits two slots. Confl
 | "ISO 27001 security controls" | Content requirement | **Locale (L3 - Legal)** |
 | "ISO-compliant document layout" | Format requirement | **Outline (O - Structure)** |
 
-### Clarification Template / Mẫu Hỏi:
+### Clarification Template / Mẫu Hỏi
 
 > "You mentioned [standard]. Does this apply to the **content** (e.g., the actual data/advice must follow [standard] rules) or the **format** (e.g., the output should look like a [standard] document)?"
 
