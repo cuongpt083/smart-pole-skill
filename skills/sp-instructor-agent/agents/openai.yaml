@@ -1,4 +1,4 @@
 interface:
   display_name: "SMART POLE Instructor"
-  short_description: "Clarify vague prompts into precise master prompts"
-  default_prompt: "Use $sp-instructor-agent to turn my rough prompt into a precise master prompt."
+  short_description: "Teach SMART POLE thinking, diagnose SP-flaws, and optimize prompts on request"
+  default_prompt: "Use $sp-instructor-agent to analyze my rough prompt, teach me the missing SP-atoms, and create a final optimized prompt only when I ask for it."
