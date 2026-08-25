@@ -73,6 +73,7 @@ Skill này được xây dựng thông qua quy trình **Reverse Engineering** (D
 - `skills/sp-instructor-agent/`: Instructor skill (`SKILL.md` + `agents/openai.yaml`)
 - `skills/sp-chat-agent/`: Chat Enforcer skill (`SKILL.md` + `agents/openai.yaml`)
 - `skills/sp-coding-agent/`: Coding Agent skill (`SKILL.md` + `agents/openai.yaml`)
+- `skills/kb-ready-extraction/`: Knowledge Base Extraction skill (`SKILL.md` + `agents/openai.yaml`)
 
 ---
 

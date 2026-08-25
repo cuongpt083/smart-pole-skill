@@ -1,0 +1,4 @@
+interface:
+  display_name: "KB-Ready Knowledge Extraction"
+  short_description: "Extract high-signal, RAG-optimized Markdown documents from transcripts and raw text"
+  default_prompt: "Use -ready-extraction to clean the provided transcript/text, remove conversational noise, and structure it into a standard Knowledge Base Markdown document with YAML Frontmatter, Key Takeaways, Detailed Content, Case Studies, and Q&A for Search."
